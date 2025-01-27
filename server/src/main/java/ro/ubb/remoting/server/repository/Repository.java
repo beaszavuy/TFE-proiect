@@ -13,4 +13,6 @@ public interface Repository <ID, T extends BaseEntity<ID>>{
     Optional<T> save(T entity);
 
     Optional<T> delete (ID id);
+
+    Optional<T> update (T entity);
 }

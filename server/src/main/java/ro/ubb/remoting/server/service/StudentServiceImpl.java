@@ -18,22 +18,24 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Set<Student> findAll() {
-        return null;
+        Iterable<Student> students = studentRepository.findAll();
+        Set<Student> collect = StreamSupport.stream(students.spliterator(), false).collect(Collectors.toSet());
+        return collect;
     }
 
     @Override
     public Integer add(Student student) {
-        return null;
+        return this.studentRepository.save(student).isPresent()?1:0;
     }
 
     @Override
     public Optional<Student> delete(Long id) {
-        return Optional.empty();
+        return this.studentRepository.delete(id);
     }
 
     @Override
     public Integer update(Student student) {
-        return null;
+        return this.studentRepository.update(student).isPresent()?1:0;
     }
 
     @Override

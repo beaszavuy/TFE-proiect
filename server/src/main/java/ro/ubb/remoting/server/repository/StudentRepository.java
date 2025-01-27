@@ -3,11 +3,13 @@ package ro.ubb.remoting.server.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
 import ro.ubb.remoting.common.domain.Student;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
 
 public class StudentRepository implements Repository<Long, Student> {
+
     private JdbcOperations jdbcOperations;
 
     @Override
@@ -37,11 +39,22 @@ public class StudentRepository implements Repository<Long, Student> {
 
     @Override
     public Optional<Student> save(Student entity) {
-        return Optional.empty();
-    }
+        String sql = "INSERT INTO students (id, name) VALUES (?, ?)";
+        jdbcOperations.update(sql, entity.getId(), entity.getName());
+        return Optional.of(entity);}
 
     @Override
     public Optional<Student> delete(Long id) {
-        return Optional.empty();
+        Optional<Student> student = findOne(id);
+        String sql = "DELETE FROM student WHERE id=?";
+        jdbcOperations.update(sql,id);
+        return Optional.ofNullable(student.get());
+    }
+
+    @Override
+    public Optional<Student> update(Student entity) {
+        String sql = "UPDATE student set id = ?, name = ?,  where id=?";
+        jdbcOperations.update(sql,entity.getId(), entity.getId());
+        return Optional.ofNullable(entity);
     }
 }
