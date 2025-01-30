@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
+import java.sql.Driver;
 
 @Configuration
 public class JdbcConfig {
@@ -19,6 +20,8 @@ public class JdbcConfig {
 
     private DataSource dataSource(){
         BasicDataSource dataSource = new BasicDataSource();
+//              dataSource.setDriverClassName(Driver.class.getName());
+
         dataSource.setUsername("postgres");
         dataSource.setPassword("ujjelszo");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/client_server");

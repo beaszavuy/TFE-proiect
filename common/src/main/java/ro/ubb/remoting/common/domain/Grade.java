@@ -3,7 +3,7 @@ package ro.ubb.remoting.common.domain;
 import java.io.Serializable;
 
 public class Grade extends BaseEntity <Long> implements Serializable {
-
+    private static final long serialVersionUID = 1L;
     private Long studentId;
     private Long disciplineId;
     private Double gradeValue;

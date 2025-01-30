@@ -3,14 +3,11 @@ package ro.ubb.remoting.server.service;
 import ro.ubb.remoting.common.domain.Discipline;
 import ro.ubb.remoting.common.domain.Grade;
 import ro.ubb.remoting.common.domain.Student;
-import ro.ubb.remoting.common.service.CatelogOnlineService;
-import ro.ubb.remoting.common.service.GradeService;
+import ro.ubb.remoting.common.service.CatalogOnlineService;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class CatalogOnlineServiceImp implements CatelogOnlineService {
+public class CatalogOnlineServiceImp implements CatalogOnlineService {
 
     private StudentServiceImpl studentService;
     private DisciplineServiceImp disciplineService;
@@ -18,6 +15,7 @@ public class CatalogOnlineServiceImp implements CatelogOnlineService {
     private GradeServiceImp gradeService;
 
     public CatalogOnlineServiceImp(StudentServiceImpl studentService, DisciplineServiceImp disciplineService, GradeServiceImp gradeService) {
+
         this.studentService = studentService;
         this.disciplineService = disciplineService;
         this.gradeService = gradeService;
@@ -28,17 +26,14 @@ public class CatalogOnlineServiceImp implements CatelogOnlineService {
         studentService.add(student);
 
     }
-
     @Override
     public void updateStudent(Student student) {
         studentService.update(student);
 
     }
-
     @Override
     public void deleteStudent(Long id) {
         studentService.delete(id);
-
     }
 
     @Override
@@ -48,8 +43,11 @@ public class CatalogOnlineServiceImp implements CatelogOnlineService {
 
     @Override
     public Set<Student> filterStudentsByName(String s) {
-        return (Set<Student>) studentService.filterStudentByName(s);
+        return studentService.filterStudentByName(s);
     }
+
+
+
 
     @Override
     public void addDiscipline(Discipline discipline) {
@@ -74,7 +72,7 @@ public class CatalogOnlineServiceImp implements CatelogOnlineService {
 
     @Override
     public Set<Discipline> filterDisciplineByName(String s) {
-         return (Set<Discipline>) disciplineService.filterDisciplineByName(s);
+         return disciplineService.filterDisciplineByName(s);
     }
 
     @Override
@@ -98,7 +96,7 @@ public class CatalogOnlineServiceImp implements CatelogOnlineService {
     }
 
     @Override
-    public List<Grade> findSubscriptionByHour(int min, int max) {
+    public Set<Grade> findSubscriptionByHour(int min, int max) {
         return null;
     }
 }

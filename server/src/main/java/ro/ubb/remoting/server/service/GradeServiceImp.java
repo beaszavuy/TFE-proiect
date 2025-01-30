@@ -29,7 +29,7 @@ public class GradeServiceImp implements GradeService {
     public Set<Grade> findAll() {
         Iterable<Grade> grade = gradeRepository.findAll();
         Set<Grade> collect = StreamSupport.stream(grade.spliterator(),false).collect(Collectors.toSet());
-        return  collect;
+        return collect;
     }
 
     @Override
