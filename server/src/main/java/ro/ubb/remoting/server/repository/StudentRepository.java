@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class StudentRepository implements Repository<Long, Student> {
-
+    @Autowired
     private JdbcOperations jdbcOperations;
 
     @Override
@@ -39,8 +39,8 @@ public class StudentRepository implements Repository<Long, Student> {
 
     @Override
     public Optional<Student> save(Student entity) {
-        String sql = "INSERT INTO students (id, name) VALUES (?, ?)";
-        jdbcOperations.update(sql, entity.getId(), entity.getName());
+        String sql = "INSERT INTO students (name) VALUES (?,?)";
+        jdbcOperations.update(sql, entity.getName());
         return Optional.of(entity);}
 
     @Override

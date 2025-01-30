@@ -1,5 +1,6 @@
 package ro.ubb.remoting.common.service;
 
+import ro.ubb.remoting.common.domain.Grade;
 import ro.ubb.remoting.common.domain.Student;
 
 import java.util.List;

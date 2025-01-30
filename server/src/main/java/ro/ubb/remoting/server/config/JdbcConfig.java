@@ -20,7 +20,7 @@ public class JdbcConfig {
 
     private DataSource dataSource(){
         BasicDataSource dataSource = new BasicDataSource();
-              dataSource.setDriverClassName(Driver.class.getName());
+//              dataSource.setDriverClassName(Driver.class.getName());
 
         dataSource.setUsername("postgres");
         dataSource.setPassword("ujjelszo");

@@ -1,11 +1,14 @@
 package ro.ubb.remoting.server.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcOperations;
+import ro.ubb.remoting.common.domain.Grade;
 import ro.ubb.remoting.common.domain.Student;
 import ro.ubb.remoting.common.service.StudentService;
 import ro.ubb.remoting.server.repository.Repository;
+import ro.ubb.remoting.server.validators.Validator;
 
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -13,9 +16,9 @@ public class StudentServiceImpl implements StudentService {
     private Repository<Long , Student> studentRepository;
     public StudentServiceImpl(Repository<Long, Student> studentRepository){
     this.studentRepository = studentRepository;
-}
+    }
 
-
+    private Validator<Student> validator;
     @Override
     public Set<Student> findAll() {
         Iterable<Student> students = studentRepository.findAll();
@@ -39,7 +42,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Object filterStudentByName(String s) {
-        return null;
+    public Set<Student> filterStudentByName(String s) {
+        Iterable<Student> students=studentRepository.findAll();
+        Set<Student> filterStudent= new HashSet<>();
+        students.forEach(filterStudent::add);
+        filterStudent.removeIf(student -> !student.getName().contains((CharSequence) filterStudent));
+        return filterStudent;
     }
 }

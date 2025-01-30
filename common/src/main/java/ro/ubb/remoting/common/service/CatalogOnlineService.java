@@ -4,10 +4,10 @@ import ro.ubb.remoting.common.domain.Discipline;
 import ro.ubb.remoting.common.domain.Grade;
 import ro.ubb.remoting.common.domain.Student;
 
-import java.util.List;
 import java.util.Set;
 
-public interface CatelogOnlineService {
+public interface CatalogOnlineService {
+
 
     public void addStudent(Student student);
     public void updateStudent (Student student);
@@ -30,5 +30,5 @@ public interface CatelogOnlineService {
     public void updateGradeSubscription (Grade grade);
     public void deleteGrade(Long id);
     public Set<Grade> getAllGrade();
-    public List<Grade> findSubscriptionByHour(int min, int max);
+    public Set<Grade> findSubscriptionByHour(int min, int max);
 }

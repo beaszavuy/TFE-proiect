@@ -1,16 +1,15 @@
 package ro.ubb.remoting.client.ui;
 
 import ro.ubb.remoting.common.domain.Student;
-import ro.ubb.remoting.common.service.CatelogOnlineService;
-import ro.ubb.remoting.common.service.StudentService;
+import ro.ubb.remoting.common.service.CatalogOnlineService;
 
 import java.util.Scanner;
 import java.util.Set;
 
 public class ClientConsole {
-    private CatelogOnlineService service;
+    private CatalogOnlineService service;
 
-    public ClientConsole(CatelogOnlineService service) {
+    public ClientConsole(CatalogOnlineService service) {
         this.service = service;
     }
 
@@ -59,9 +58,14 @@ public class ClientConsole {
 
     }
 
-    private void printAllStudents(){
-        Set<Student> student = service.getAllStudents();
-        System.out.println(student);
+    private void printAllStudents() {
+        Set<Student> students = service.getAllStudents();
+        if (students==null){
+            System.out.println("nu sunt studenti");// Feltételezve, hogy már List-et ad vissza
+        }else{
+            System.out.println(students);
+        }
+
     }
 
     private void addStudent(){

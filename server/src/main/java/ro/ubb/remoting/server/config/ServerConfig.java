@@ -6,8 +6,7 @@ import org.springframework.remoting.rmi.RmiServiceExporter;
 import ro.ubb.remoting.common.domain.Discipline;
 import ro.ubb.remoting.common.domain.Grade;
 import ro.ubb.remoting.common.domain.Student;
-import ro.ubb.remoting.common.service.CatelogOnlineService;
-import ro.ubb.remoting.common.service.StudentService;
+import ro.ubb.remoting.common.service.CatalogOnlineService;
 import ro.ubb.remoting.server.repository.DisciplineRepository;
 import ro.ubb.remoting.server.repository.GradeRepository;
 import ro.ubb.remoting.server.repository.Repository;
@@ -22,14 +21,16 @@ public class ServerConfig {
     @Bean
     RmiServiceExporter rmiServiceExporter() {
         RmiServiceExporter rmiServiceExporter = new RmiServiceExporter();
-        rmiServiceExporter.setServiceInterface(CatelogOnlineService.class);
+        rmiServiceExporter.setServiceInterface(CatalogOnlineService.class);
         rmiServiceExporter.setService(onlineCatalogServiceImp());
-        rmiServiceExporter.setServiceName("CatelogOnlineService");
+        rmiServiceExporter.setServiceName("CatalogOnlineService");
+        rmiServiceExporter.setRegistryPort(1099);
+
         return rmiServiceExporter;
     }
 
     @Bean
-    CatelogOnlineService onlineCatalogServiceImp(){
+    CatalogOnlineService onlineCatalogServiceImp(){
         return new CatalogOnlineServiceImp(studentService(), disciplineService(), gradeService());
     }
 
