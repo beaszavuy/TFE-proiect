@@ -6,6 +6,7 @@ import ro.ubb.remoting.common.domain.Grade;
 import ro.ubb.remoting.common.domain.Student;
 import ro.ubb.remoting.common.service.CatalogOnlineService;
 
+import java.util.List;
 import java.util.Set;
 
 public class CatalogOnlineServiceClient implements CatalogOnlineService {
@@ -30,7 +31,7 @@ public class CatalogOnlineServiceClient implements CatalogOnlineService {
     }
 
     @Override
-    public Set<Student> getAllStudents() {
+    public List<Student> getAllStudents() {
         return service.getAllStudents();
     }
 
@@ -55,7 +56,7 @@ public class CatalogOnlineServiceClient implements CatalogOnlineService {
     }
 
     @Override
-    public Set<Discipline> getAllDiscipline() {
+    public List<Discipline> getAllDiscipline() {
         return service.getAllDiscipline();
     }
 
@@ -80,7 +81,7 @@ public class CatalogOnlineServiceClient implements CatalogOnlineService {
     }
 
     @Override
-    public Set<Grade> getAllGrade() {
+    public List<Grade> getAllGrade() {
         return service.getAllGrade();
     }
 

@@ -7,14 +7,12 @@ import ro.ubb.remoting.common.domain.Discipline;
 import ro.ubb.remoting.common.domain.Grade;
 import ro.ubb.remoting.common.domain.Student;
 import ro.ubb.remoting.common.service.CatalogOnlineService;
+import ro.ubb.remoting.common.service.Interfata;
 import ro.ubb.remoting.server.repository.DisciplineRepository;
 import ro.ubb.remoting.server.repository.GradeRepository;
 import ro.ubb.remoting.server.repository.Repository;
 import ro.ubb.remoting.server.repository.StudentRepository;
-import ro.ubb.remoting.server.service.CatalogOnlineServiceImp;
-import ro.ubb.remoting.server.service.DisciplineServiceImp;
-import ro.ubb.remoting.server.service.GradeServiceImp;
-import ro.ubb.remoting.server.service.StudentServiceImpl;
+import ro.ubb.remoting.server.service.*;
 
 @Configuration
 public class ServerConfig {
@@ -24,6 +22,16 @@ public class ServerConfig {
         rmiServiceExporter.setServiceInterface(CatalogOnlineService.class);
         rmiServiceExporter.setService(onlineCatalogServiceImp());
         rmiServiceExporter.setServiceName("CatalogOnlineService");
+        rmiServiceExporter.setRegistryPort(1099);
+
+        return rmiServiceExporter;
+    }
+    @Bean
+    RmiServiceExporter rmiServiceExporter2() {
+        RmiServiceExporter rmiServiceExporter = new RmiServiceExporter();
+        rmiServiceExporter.setServiceInterface(Interfata.class);
+        rmiServiceExporter.setService(new MyService());
+        rmiServiceExporter.setServiceName("Interfata");
         rmiServiceExporter.setRegistryPort(1099);
 
         return rmiServiceExporter;

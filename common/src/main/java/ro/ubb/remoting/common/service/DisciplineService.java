@@ -13,7 +13,7 @@ public interface DisciplineService extends  Service<Discipline>{
 
     Object filterDisciplineByName(String filterName);
 
-    Set<Discipline> findAll();
+    List<Discipline> findAll();
 
     Integer update (Discipline discipline);
     Optional<Discipline>deleteDiscipline(Long id);

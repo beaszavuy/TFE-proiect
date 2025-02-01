@@ -25,7 +25,7 @@ public class DisciplineServiceImp implements DisciplineService {
     }
 
     @Override
-    public Set<Discipline> findAll() {
+    public List<Discipline> findAll() {
         return null;
     }
 

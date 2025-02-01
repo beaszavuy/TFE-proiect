@@ -1,8 +1,5 @@
 package ro.ubb.remoting.server.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcOperations;
-import ro.ubb.remoting.common.domain.Grade;
 import ro.ubb.remoting.common.domain.Student;
 import ro.ubb.remoting.common.service.StudentService;
 import ro.ubb.remoting.server.repository.Repository;
@@ -20,11 +17,12 @@ public class StudentServiceImpl implements StudentService {
 
     private Validator<Student> validator;
     @Override
-    public Set<Student> findAll() {
+    public List<Student> findAll() {
         Iterable<Student> students = studentRepository.findAll();
-        Set<Student> collect = StreamSupport.stream(students.spliterator(), false).collect(Collectors.toSet());
-        return collect;
+        return StreamSupport.stream(students.spliterator(), false)
+                .collect(Collectors.toList()); // Collect directly into a List
     }
+
 
     @Override
     public Integer add(Student student) {

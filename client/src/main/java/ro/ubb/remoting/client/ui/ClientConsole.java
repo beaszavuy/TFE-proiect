@@ -1,19 +1,26 @@
 package ro.ubb.remoting.client.ui;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import ro.ubb.remoting.common.domain.Student;
 import ro.ubb.remoting.common.service.CatalogOnlineService;
+import ro.ubb.remoting.common.service.Interfata;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
 public class ClientConsole {
     private CatalogOnlineService service;
+    @Autowired private Interfata interfata;
 
     public ClientConsole(CatalogOnlineService service) {
         this.service = service;
     }
 
     public void runConsole() {
+        System.out.println("vdjn");
+        interfata.getAll().forEach(student -> System.out.println(student));
+        System.out.printf("vdhfsjaaa");
         printMenu();
 //        studentService.getAllStudents()
 //                .forEach(student -> System.out.println(student));
@@ -59,7 +66,7 @@ public class ClientConsole {
     }
 
     private void printAllStudents() {
-        Set<Student> students = service.getAllStudents();
+        List<Student> students = service.getAllStudents();
         if (students==null){
             System.out.println("nu sunt studenti");// Feltételezve, hogy már List-et ad vissza
         }else{

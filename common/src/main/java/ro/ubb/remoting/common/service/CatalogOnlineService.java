@@ -4,6 +4,7 @@ import ro.ubb.remoting.common.domain.Discipline;
 import ro.ubb.remoting.common.domain.Grade;
 import ro.ubb.remoting.common.domain.Student;
 
+import java.util.List;
 import java.util.Set;
 
 public interface CatalogOnlineService {
@@ -13,7 +14,7 @@ public interface CatalogOnlineService {
     public void updateStudent (Student student);
 
     public void deleteStudent(Long id);
-    public Set<Student> getAllStudents();
+    public List<Student> getAllStudents();
     public Set<Student> filterStudentsByName(String s);
 
 
@@ -21,7 +22,7 @@ public interface CatalogOnlineService {
     public void updateDiscipline (Discipline discipline);
 
     public void deleteDiscipline(Long id);
-    public Set<Discipline> getAllDiscipline();
+    public List<Discipline> getAllDiscipline();
     public Set<Discipline> filterDisciplineByName(String s);
 
 
@@ -29,6 +30,6 @@ public interface CatalogOnlineService {
     public void addSGrade(Grade grade);
     public void updateGradeSubscription (Grade grade);
     public void deleteGrade(Long id);
-    public Set<Grade> getAllGrade();
+    public List<Grade> getAllGrade();
     public Set<Grade> findSubscriptionByHour(int min, int max);
 }

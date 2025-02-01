@@ -6,6 +6,7 @@ import org.springframework.remoting.rmi.RmiProxyFactoryBean;
 import ro.ubb.remoting.client.service.CatalogOnlineServiceClient;
 import ro.ubb.remoting.client.ui.ClientConsole;
 import ro.ubb.remoting.common.service.CatalogOnlineService;
+import ro.ubb.remoting.common.service.Interfata;
 
 @Configuration
 public class ClientConfig {
@@ -19,6 +20,15 @@ public class ClientConfig {
         return rmiProxyFactoryBean;
     }
 
+    @Bean
+    RmiProxyFactoryBean rmiProxyFactoryBean2() {
+        RmiProxyFactoryBean rmiProxyFactoryBean = new RmiProxyFactoryBean();
+        rmiProxyFactoryBean.setServiceUrl("rmi://localhost:1099/Interfata");
+        rmiProxyFactoryBean.setServiceInterface(Interfata.class);
+        System.out.println("RMI Service registered successfully client!");
+
+        return rmiProxyFactoryBean;
+    }
     @Bean
     ClientConsole clientConsole() {
         return new ClientConsole(catalogOnlineServiceClient());

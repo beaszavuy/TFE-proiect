@@ -9,7 +9,7 @@ import java.util.Set;
 
 public interface Service <T extends BaseEntity> {
 
-    Set<T> findAll();
+    List<T> findAll();
     Integer add(T entity);
     Optional<T> delete(Long id);
     Integer update (T entity);

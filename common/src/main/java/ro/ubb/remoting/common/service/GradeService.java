@@ -9,7 +9,7 @@ import java.util.Set;
 public interface GradeService extends Service<Grade>{
 
 
-    Set<Grade> findAll();
+    List<Grade> findAll();
 
 
     Integer add(Grade entity);

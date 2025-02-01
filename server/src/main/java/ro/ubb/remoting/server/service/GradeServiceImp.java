@@ -26,10 +26,10 @@ public class GradeServiceImp implements GradeService {
     }
 
     @Override
-    public Set<Grade> findAll() {
+    public List<Grade> findAll() {
         Iterable<Grade> grade = gradeRepository.findAll();
         Set<Grade> collect = StreamSupport.stream(grade.spliterator(),false).collect(Collectors.toSet());
-        return collect;
+        return (List<Grade>) collect;
     }
 
     @Override
